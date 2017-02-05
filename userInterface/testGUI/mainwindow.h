@@ -5,6 +5,9 @@
 #include <QProcess>
 #include <QDebug>
 #include <QTimer>
+#include <fstream>
+#include <string>
+#include <QFile>
 
 namespace Ui {
 class MainWindow;
@@ -23,12 +26,14 @@ private:
     QProcess* scanProc; //process to start airDump
     QProcess* checkProc; //process to check dump file
     QProcess* prepProc; //process to remove dump files and take down wlan0
+    QProcess* attackDjiProc;
     QTimer* checkTimer; //timer to run checkProc
-    void attackDjiTelem(); //deauth transmitter AP and shutdown down telemetry
+    void attackDjiTelem(QString &address); //deauth transmitter AP and shutdown down telemetry
+    std::ifstream fin;
     // bool droneFound; //change to ENUM
+    QString macAddr;
 
 private slots:
-    void process();
     void readScript(); //slot to read from script output
     void runCheck(); //run checkProc script
 

