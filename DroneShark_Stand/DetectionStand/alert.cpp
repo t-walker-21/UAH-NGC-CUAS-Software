@@ -1,24 +1,24 @@
 #include "alert.h"
 
-Alert::Alert()
+Alert::Alert(QObject *parent) : QObject(parent)
 {
     initProc = new QProcess();
-    initProc->start("..."); //TODO:init light script
+        initProc->start("..."); //TODO:init light script
 
-    YELLOW = false;
-    GREEN = false;
-    RED = false;
-    BUZZER = false;
+        YELLOW = false;
+        GREEN = false;
+        RED = false;
+        BUZZER = false;
 
-    redProc = new QProcess();
-    yellowProc = new QProcess();
-    greenProc = new QProcess();
-    buzzerProc = new QProcess();
-    flashTimer = new QTimer();
+        redProc = new QProcess();
+        yellowProc = new QProcess();
+        greenProc = new QProcess();
+        buzzerProc = new QProcess();
+        flashTimer = new QTimer();
 
-    connect(flashTimer,SIGNAL(timeout()),this,SLOT(toggleLights()));
+        connect(flashTimer,SIGNAL(timeout()),this,SLOT(toggleLights()));
 
-    delete initProc;
+        delete initProc;
 
 }
 

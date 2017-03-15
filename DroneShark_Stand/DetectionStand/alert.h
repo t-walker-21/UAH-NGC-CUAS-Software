@@ -1,5 +1,7 @@
 #ifndef ALERT_H
 #define ALERT_H
+
+#include <QObject>
 #include"alertdialog.h"
 #include<QProcess>
 #include<QTimer>
@@ -7,14 +9,16 @@
 #define SCNPER 1000
 #define DETPER 250
 
-
-class Alert
+class Alert : public QObject
 {
+    Q_OBJECT
 public:
-    Alert();
-    void standby(); //solid green light
-    void droneDetected(); //flash red and sound buzzer @ 4 Hz
-    void scanning(); //flash yellow @ 1 Hz
+    explicit Alert(QObject *parent = 0);
+       ~Alert();
+       void standby(); //solid green light
+       void droneDetected(); //flash red and sound buzzer @ 4 Hz
+       void scanning(); //flash yellow @ 1 Hz
+
 
 private:
     void killAllLights(bool killTimer); //turn of all lights and buzzer
@@ -39,7 +43,10 @@ private:
 
 private slots:
     void toggleLights();
-
+    void greenToggle();
+    void yellowToggle();
+    void redToggle();
+    void buzzerToggle();
 };
 
 #endif // ALERT_H
