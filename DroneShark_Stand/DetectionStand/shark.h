@@ -10,14 +10,15 @@ class Shark : public QObject
     Q_OBJECT
 public:
     explicit Shark(QObject *parent = 0);
+
     void setAutoTakedown(bool state);
-    void bite;
-    void stopBite;
+    void bite();
+    void stopBite();
+    AttackVector* aVector;
+    DetectionVector* dVector;
 
 
 private:
-    AttackVector aVector;
-    DetectionVector dVector;
     bool autoTakedown;
 
 

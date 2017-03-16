@@ -1,13 +1,14 @@
 #ifndef ATTACKVECTOR_H
 #define ATTACKVECTOR_H
+
+#include <QObject>
 #include <QProcess>
 
-class AttackVector
+class AttackVector: public QObject
 {
 public:
-    AttackVector(QString script,int level,QString name);
+    explicit AttackVector(QObject *parent = 0);
     void installAttack(QString name,QString script,int level);
-    void attack();
     void haltAttack();
 
 private:
@@ -15,6 +16,9 @@ private:
     QString name;
     QString script;
     QProcess* engage;
+
+public slots:
+    void attack();
 
 };
 

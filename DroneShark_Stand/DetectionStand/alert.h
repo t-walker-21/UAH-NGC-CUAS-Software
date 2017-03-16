@@ -15,9 +15,7 @@ class Alert : public QObject
 public:
     explicit Alert(QObject *parent = 0);
        ~Alert();
-       void standby(); //solid green light
-       void droneDetected(); //flash red and sound buzzer @ 4 Hz
-       void scanning(); //flash yellow @ 1 Hz
+
 
 
 private:
@@ -47,6 +45,9 @@ private slots:
     void yellowToggle();
     void redToggle();
     void buzzerToggle();
+    void standby(); //solid green light
+    void droneDetected(); //flash red and sound buzzer @ 4 Hz
+    void scanning(); //flash yellow @ 1 Hz
 };
 
 #endif // ALERT_H

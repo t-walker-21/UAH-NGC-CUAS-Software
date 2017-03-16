@@ -3,17 +3,18 @@
 Shark::Shark(QObject *parent) : QObject(parent)
 {
     autoTakedown = true;
-
+    dVector = new DetectionVector();
+    aVector = new AttackVector();
 }
 
 void Shark::bite()
 {
-    aVector.attack();
+    //aVector->attack();
 }
 
 void Shark::stopBite()
 {
-    aVector.haltAttack();
+    aVector->haltAttack();
 }
 
 void Shark::setAutoTakedown(bool state)

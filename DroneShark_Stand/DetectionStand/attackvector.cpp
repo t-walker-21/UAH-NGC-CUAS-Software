@@ -1,24 +1,26 @@
 #include "attackvector.h"
 
 
-AttackVector::AttackVector(QString script,int level,QString name)
+AttackVector::AttackVector(QObject *parent) : QObject(parent)
 {
-    this->script = script;
-    this->level = level;
-    this->name = name;
-    bite = new QProcess();
+    engage = new QProcess();
 }
 
  void AttackVector::installAttack(QString name,QString script,int level)
  {
      this->script = script;
-     this->level;
+     this->level = level;
+     this->name = name;
  }
 
  void AttackVector::attack()
  {
-     bite->start("sh " + this->script);
+     engage->start("sh " + this->script);
 
  }
 
+void AttackVector::haltAttack()
+{
+    engage->kill();
+}
 

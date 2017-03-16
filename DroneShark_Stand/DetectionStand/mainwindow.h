@@ -5,6 +5,9 @@
 #include <QDebug>
 #include <QSerialPort>
 #include <mainmenu.h>
+#include <QTime>
+#include <shark.h>
+#include <alert.h>
 
 namespace Ui {
 class MainWindow;
@@ -20,17 +23,19 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QSerialPort* xbee;
-    bool configureSerialPort();
+
     MainMenu* mainMenu;
     int bufferCount;
     QString* receivedData;
+    Shark* shark;
+    Alert* alert;
 
 
 private slots:
     void goToMainMenu();
     void sendData();
     void populateLineEdit();
+    void receiveDetect();
 };
 
 #endif // MAINWINDOW_H

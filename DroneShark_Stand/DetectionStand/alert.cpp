@@ -3,7 +3,7 @@
 Alert::Alert(QObject *parent) : QObject(parent)
 {
     initProc = new QProcess();
-        initProc->start("..."); //TODO:init light script
+    //initProc->start("..."); //TODO:init light script
 
         YELLOW = false;
         GREEN = false;
@@ -17,9 +17,7 @@ Alert::Alert(QObject *parent) : QObject(parent)
         flashTimer = new QTimer();
 
         connect(flashTimer,SIGNAL(timeout()),this,SLOT(toggleLights()));
-
         delete initProc;
-
 }
 
 Alert::~Alert()
@@ -138,12 +136,11 @@ void Alert::standby() //only green is solid
     }
 }
 
-void Alert::droneDetected() //only red will flash
+void Alert::droneDetected() //only red and buzzer will flash
 {
     flashTimer->setInterval(DETPER);
     killAllLights(false);
-
-
+    RED = BUZZER = true;
 }
 
 void Alert::killAllLights(bool killTimer) //turnoff all lights

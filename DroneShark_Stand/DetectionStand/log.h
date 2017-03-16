@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QFile>
+#include <QTime>
 
 class Log : public QObject
 {
@@ -12,6 +13,10 @@ public:
 
 private:
     QFile* logFile;
+    QTime* timeStamp;
+    QString user; //QString script,int level,QString name
+    bool createNewLogFile();
+
 
 
 public slots:
