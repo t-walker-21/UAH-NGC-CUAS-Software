@@ -8,6 +8,12 @@
 #include <QTime>
 #include <shark.h>
 #include <alert.h>
+#include <log.h>
+#include <hardwaremanager.h>
+#include <commsmanagers.h>
+#include <xbeecomms.h>
+#include <xbeeradio.h>
+#include <switchreader.h>
 
 namespace Ui {
 class MainWindow;
@@ -25,10 +31,14 @@ private:
     Ui::MainWindow *ui;
 
     MainMenu* mainMenu;
-    int bufferCount;
     QString* receivedData;
     Shark* shark;
     Alert* alert;
+    Log* logFile;
+    HardwareManager* hwMan;
+    CommsManagers* comms;
+    XbeeRadio* xbee;
+    SwitchReader* scanner;
 
 
 private slots:

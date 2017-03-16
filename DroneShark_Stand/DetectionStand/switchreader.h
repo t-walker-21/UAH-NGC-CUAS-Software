@@ -2,6 +2,7 @@
 #define SWITCHREADER_H
 
 #include <QObject>
+#include <QProcess>
 
 class SwitchReader : public QObject
 {
@@ -9,7 +10,15 @@ class SwitchReader : public QObject
 public:
     explicit SwitchReader(QObject *parent = 0);
 
+private:
+    QProcess* sw1Read;
+    QProcess* sw2Read;
+    QProcess* sw3Read;
+
 signals:
+    void sw1Val(bool state);
+    void sw2Val(bool state);
+    void sw3Val(bool state);
 
 public slots:
 };
