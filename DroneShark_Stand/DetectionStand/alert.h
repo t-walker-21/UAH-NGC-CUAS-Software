@@ -20,7 +20,7 @@ public:
 
 private:
     void killAllLights(bool killTimer); //turn of all lights and buzzer
-    void deployGUI();
+    void deployGUI(); // show alert GUI when alert is signaled
     void checkHardware(); //check to sure hardware peripherals are still attached
 
     AlertDialog alertWindow; //GUI window presented upon drone detection to give user information/options to engage threat UAV

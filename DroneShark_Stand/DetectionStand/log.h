@@ -12,10 +12,10 @@ public:
     explicit Log(QObject *parent = 0);
 
 private:
-    QFile* logFile;
-    QTime* timeStamp;
+    QFile* logFile; //file to hold information about current shark operation
+    QTime* timeStamp; //object to store information about time
     QString user; //QString script,int level,QString name
-    bool createNewLogFile();
+    bool createNewLogFile(); //function to create a new Log file. returns TRUE/FALSE if successful
 
 
 
