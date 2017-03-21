@@ -17,7 +17,8 @@ private:
     QString user; //QString script,int level,QString name
     bool createNewLogFile(); //function to create a new Log file. returns TRUE/FALSE if successful
 
-
+    /*QTime time = QTime::currentTime();
+    QString te = time.toString("hh:mm:ss");*/
 
 public slots:
 };

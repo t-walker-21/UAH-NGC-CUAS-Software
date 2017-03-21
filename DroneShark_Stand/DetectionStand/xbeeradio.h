@@ -11,35 +11,12 @@ public:
     explicit XbeeRadio(QObject *parent = 0);
 
 private:
-    QSerialPort* xbee;
-    bool configureSerialPort();
+    QSerialPort* xbeeSerialPort; // serial port to write to Xbee
+    bool configureSerialPort(); // configure and attempt to open serial port. Returns TRUE/FALSE if successful
 
 signals:
 
-    /*xbee = new QSerialPort(this);
-    xbee->setPortName("/dev/ttyUSB0");
-    xbee->setBaudRate(QSerialPort::Baud9600);
-    xbee->setParity(QSerialPort::NoParity);
-    xbee->setDataBits(QSerialPort::Data8);
-    xbee->setFlowControl(QSerialPort::NoFlowControl);
-    xbee->setStopBits(QSerialPort::OneStop);
-    xbee->open(QIODevice::ReadWrite);
 
-    QTime time = QTime::currentTime();
-    QString te = time.toString("hh:mm:ss");
-
-
-    if (xbee->isOpen())
-    {
-        qDebug() << "Sucessfull opened " << xbee->portName() << endl;
-        return true;
-    }
-
-    else
-    {
-        qDebug() << "Could not open " << xbee->portName() << te << qgetenv("USER") << endl;
-        return false;
-    }*/
 
 
 public slots:
