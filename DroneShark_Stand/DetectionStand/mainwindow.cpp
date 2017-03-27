@@ -13,15 +13,18 @@ MainWindow::MainWindow(QWidget *parent) :
     //connect(xbee,SIGNAL(readyRead()),this,SLOT(populateLineEdit()));
     //ui->lineEdit_2->setEnabled(false);
 
-    shark = new Shark();
+    /*shark = new Shark();
     alert = new Alert();
 
     connect(shark->dVector,SIGNAL(droneDetected()),shark->aVector,SLOT(attack()));
     connect(shark->dVector,SIGNAL(droneDetected()),alert,SLOT(droneDetected()));
 
     shark->dVector->installDetection("../scripts/exampleDet.sh","example","drone");
-    shark->dVector->detect();
+    shark->dVector->detect();*/
 
+    this->hwMan = new HardwareManager();
+
+    connect(hwMan,SIGNAL(hackRFRemoved()),this,SLOT(displayConnectivity()));
 
 }
 
@@ -60,4 +63,9 @@ void MainWindow::populateLineEdit()
 void MainWindow::receiveDetect()
 {
     qDebug() << "generic drone detected";
+}
+
+void MainWindow::displayConnectivity()
+{
+    qDebug() << "HACKRF has been disconnected";
 }

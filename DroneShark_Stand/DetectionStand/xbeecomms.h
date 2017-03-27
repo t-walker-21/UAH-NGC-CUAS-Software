@@ -3,7 +3,7 @@
 
 #endif // XBEECOMMS_H
 
-enum Symbols
+enum XBEE
 {
     MUTE_STAND = 0,
     UNMUTE_STAND,

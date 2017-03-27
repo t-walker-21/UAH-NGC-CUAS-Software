@@ -10,6 +10,9 @@ class SwitchReader : public QObject
     Q_OBJECT
 public:
     explicit SwitchReader(QObject *parent = 0);
+    bool getSw1State(); //return value of switch 1
+    bool getSw2State(); //return value of switch 2
+    bool getSw3State(); //return value of switch 3
 
 private:
     bool sw1; // variable to store state of switch 1
@@ -28,6 +31,10 @@ signals:
     void sw3ValChanged(bool state); // signal to emit if poistion of switch 3 changes
 
 public slots:
+    void readSwitches(); // slot to initiate reading script
+    void readOutput1(); // slot to respond to sw1Read
+    void readOutput2(); // slot to respond to sw2Read
+
 };
 
 #endif // SWITCHREADER_H

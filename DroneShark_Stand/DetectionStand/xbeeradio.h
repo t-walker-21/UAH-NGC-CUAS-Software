@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSerialPort>
+#include <QDebug>
 
 class XbeeRadio : public QObject
 {

@@ -11,7 +11,6 @@
 #include <log.h>
 #include <hardwaremanager.h>
 #include <commsmanagers.h>
-#include <xbeecomms.h>
 #include <xbeeradio.h>
 #include <switchreader.h>
 
@@ -46,6 +45,7 @@ private slots:
     void sendData();
     void populateLineEdit();
     void receiveDetect();
+    void displayConnectivity();
 };
 
 #endif // MAINWINDOW_H
