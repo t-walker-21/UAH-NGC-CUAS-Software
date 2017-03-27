@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo 0 > /sys/class/gpio/gpio17/value 
+echo 0 > /sys/class/gpio/gpio22/value 
