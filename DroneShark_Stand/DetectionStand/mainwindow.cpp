@@ -23,8 +23,11 @@ MainWindow::MainWindow(QWidget *parent) :
     shark->dVector->detect();*/
 
     this->hwMan = new HardwareManager();
+    this->alert = new Alert();
 
+    connect(hwMan,SIGNAL(hackRFRemoved()),alert,SLOT(droneDetected()));
     connect(hwMan,SIGNAL(hackRFRemoved()),this,SLOT(displayConnectivity()));
+
 
 }
 

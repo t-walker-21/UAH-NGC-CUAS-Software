@@ -33,13 +33,13 @@ void Alert::buzzerToggle()
 {
     if (BUZZER) //light is on
     {
-        buzzerProc->start("sh ../BUZZER_OFF.sh");
+        buzzerProc->start("sh ../../Scripts/BUZZER_OFF.sh");
         BUZZER = false;
     }
 
     else //light is off
     {
-        buzzerProc->start("sh ../BUZZER_ON.sh");
+        buzzerProc->start("sh ../../Scripts/BUZZER_ON.sh");
         BUZZER = true;
     }
 }
@@ -48,13 +48,13 @@ void Alert::yellowToggle()
 {
     if (YELLOW) //light is on
     {
-        yellowProc->start("sh ../YELLOW_OFF.sh");
+        yellowProc->start("sh ../../Scripts/YELLOW_OFF.sh");
         YELLOW = false;
     }
 
     else //light is off
     {
-        yellowProc->start("sh ../YELLOW_ON.sh");
+        yellowProc->start("sh ../../Scripts/YELLOW_ON.sh");
         YELLOW = true;
     }
 }
@@ -63,13 +63,13 @@ void Alert::greenToggle()
 {
     if (GREEN) //light is on
     {
-        greenProc->start("sh ../GREEN_OFF.sh");
+        greenProc->start("sh ../../Scripts/GREEN_OFF.sh");
         GREEN = false;
     }
 
     else //light is off
     {
-        greenProc->start("sh ../GREEN_ON.sh");
+        greenProc->start("sh ../../Scripts/GREEN_ON.sh");
         GREEN = true;
     }
 
@@ -79,13 +79,13 @@ void Alert::redToggle()
 {
     if (RED) //light is on
     {
-        redProc->start("sh ../RED_OFF.sh");
+        redProc->start("sh ../../Scripts/RED_OFF.sh");
         RED = false;
     }
 
     else //light is off
     {
-        redProc->start("sh ../RED_ON.sh");
+        redProc->start("sh ../../Scripts/RED_ON.sh");
         RED = true;
     }
 
