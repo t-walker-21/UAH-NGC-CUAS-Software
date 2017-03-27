@@ -33,7 +33,7 @@ private:
     QString* receivedData;
     Shark* shark;
     Alert* alert;
-    Log* logFile;
+    Log* log;
     HardwareManager* hwMan;
     CommsManagers* comms;
     XbeeRadio* xbee;
@@ -46,6 +46,8 @@ private slots:
     void populateLineEdit();
     void receiveDetect();
     void displayConnectivity();
+    void startLog();
+    void endLog();
 };
 
 #endif // MAINWINDOW_H

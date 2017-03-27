@@ -22,11 +22,13 @@ MainWindow::MainWindow(QWidget *parent) :
     shark->dVector->installDetection("../scripts/exampleDet.sh","example","drone");
     shark->dVector->detect();*/
 
-    this->hwMan = new HardwareManager();
+    //this->hwMan = new HardwareManager();
     this->alert = new Alert();
-
-    connect(hwMan,SIGNAL(hackRFRemoved()),alert,SLOT(droneDetected()));
-    connect(hwMan,SIGNAL(hackRFRemoved()),this,SLOT(displayConnectivity()));
+    this->log = new Log();
+    connect(ui->startLog,SIGNAL(clicked(bool)),log,SLOT(startRecording()));
+    connect(ui->endLog,SIGNAL(clicked(bool)),log,SLOT(stopRecording()));
+    //connect(hwMan,SIGNAL(hackRFRemoved()),alert,SLOT(droneDetected()));
+    //connect(hwMan,SIGNAL(hackRFRemoved()),this,SLOT(displayConnectivity()));
 
 
 }
@@ -71,4 +73,13 @@ void MainWindow::receiveDetect()
 void MainWindow::displayConnectivity()
 {
     qDebug() << "HACKRF has been disconnected";
+}
+
+void MainWindow::startLog()
+{
+}
+
+void MainWindow::endLog()
+{
+
 }

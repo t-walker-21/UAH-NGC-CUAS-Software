@@ -27,7 +27,7 @@
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -62,6 +62,32 @@
      <attribute name="title">
       <string>Logs</string>
      </attribute>
+     <widget class="QPushButton" name="startLog">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>60</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>start</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="endLog">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>80</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>stop</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -76,7 +102,7 @@
      <x>0</x>
      <y>0</y>
      <width>1150</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
