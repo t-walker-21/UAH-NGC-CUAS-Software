@@ -178,7 +178,9 @@ void Alert::killAllLights(bool killTimer) //turnoff all lights
 
 void Alert::deployGUI() //setup and show alertWindow;
 {
-
+    alertWindow = new AlertDialog();
+    alertWindow->showFullScreen();
+    //temp->setModal(false);
 }
 
 void Alert::checkHardware() //check for hardware

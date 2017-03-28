@@ -24,9 +24,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //this->hwMan = new HardwareManager();
     this->alert = new Alert();
-    this->log = new Log();
+    //this->log = new Log();
     connect(ui->startLog,SIGNAL(clicked(bool)),log,SLOT(startRecording()));
     connect(ui->endLog,SIGNAL(clicked(bool)),log,SLOT(stopRecording()));
+    connect(ui->alert,SIGNAL(clicked(bool)),alert,SLOT(deployGUI()));
     //connect(hwMan,SIGNAL(hackRFRemoved()),alert,SLOT(droneDetected()));
     //connect(hwMan,SIGNAL(hackRFRemoved()),this,SLOT(displayConnectivity()));
 
@@ -83,3 +84,4 @@ void MainWindow::endLog()
 {
 
 }
+

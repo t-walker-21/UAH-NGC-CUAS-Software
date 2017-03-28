@@ -20,10 +20,10 @@ public:
 
 private:
     void killAllLights(bool killTimer); //turn of all lights and buzzer
-    void deployGUI(); // show alert GUI when alert is signaled
+
     void checkHardware(); //check to sure hardware peripherals are still attached
 
-    AlertDialog alertWindow; //GUI window presented upon drone detection to give user information/options to engage threat UAV
+    AlertDialog* alertWindow; //GUI window presented upon drone detection to give user information/options to engage threat UAV
 
     //keep track of lights/buzzer state
     bool YELLOW;
@@ -48,6 +48,7 @@ private slots:
     void standby(); //solid green light
     void droneDetected(); //flash red and sound buzzer @ 4 Hz
     void scanning(); //flash yellow @ 1 Hz
+    void deployGUI(); // show alert GUI when alert is signaled
 };
 
 #endif // ALERT_H
