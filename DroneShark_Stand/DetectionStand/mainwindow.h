@@ -38,16 +38,18 @@ private:
     CommsManagers* comms;
     XbeeRadio* xbee;
     SwitchReader* scanner;
+    bool deployed;
 
 
 private slots:
     void goToMainMenu();
     void sendData();
-    void populateLineEdit();
     void receiveDetect();
     void displayConnectivity();
     void startLog();
     void endLog();
+    void startSystem();
+    void stopSystem();
 };
 
 #endif // MAINWINDOW_H

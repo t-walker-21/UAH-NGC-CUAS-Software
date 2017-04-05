@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1150</width>
-    <height>742</height>
+    <width>680</width>
+    <height>468</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,93 +19,203 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1111</width>
-      <height>671</height>
+      <width>691</width>
+      <height>421</height>
      </rect>
     </property>
     <property name="tabShape">
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
       <string>Stand Configuration</string>
      </attribute>
-     <widget class="QSplitter" name="splitter">
+     <widget class="QLabel" name="statusLabel">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>256</width>
-        <height>451</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <widget class="QTableView" name="tableView"/>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>Add New Shark</string>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Attack Vectors Library</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Logs</string>
-     </attribute>
-     <widget class="QPushButton" name="startLog">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>60</y>
-        <width>89</width>
-        <height>25</height>
+        <x>50</x>
+        <y>350</y>
+        <width>67</width>
+        <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>start</string>
+       <string>Status: </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="endLog">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>80</y>
-        <width>89</width>
-        <height>25</height>
+        <x>470</x>
+        <y>250</y>
+        <width>82</width>
+        <height>58</height>
        </rect>
       </property>
-      <property name="text">
-       <string>stop</string>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="startButton">
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="stopButton">
+         <property name="text">
+          <string>Stop</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>Alerts</string>
-     </attribute>
-     <widget class="QPushButton" name="alert">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>150</y>
-        <width>89</width>
-        <height>25</height>
+        <x>52</x>
+        <y>71</y>
+        <width>397</width>
+        <height>95</height>
        </rect>
       </property>
-      <property name="text">
-       <string>fire alert</string>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="djiInfo">
+           <property name="text">
+            <string>info</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Enable DJI</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="djiBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QPushButton" name="ardroneInfo">
+           <property name="text">
+            <string>info</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Enable AR Drone</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="ardroneBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Automatic Takedown</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="ardroneAuto">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QPushButton" name="mavlinkInfo">
+           <property name="text">
+            <string>info</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Enable MavLink</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="mavlinkBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Automatic Takedown</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="mavlinkAuto">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
+     <zorder>startButton</zorder>
+     <zorder>stopButton</zorder>
+     <zorder>label</zorder>
+     <zorder>label_2</zorder>
+     <zorder>label_4</zorder>
+     <zorder>djiBox</zorder>
+     <zorder>ardroneBox</zorder>
+     <zorder>mavlinkBox</zorder>
+     <zorder>label_4</zorder>
+     <zorder>label_2</zorder>
+     <zorder>djiInfo</zorder>
+     <zorder>ardroneInfo</zorder>
+     <zorder>mavlinkInfo</zorder>
+     <zorder>statusLabel</zorder>
+     <zorder>label_3</zorder>
+     <zorder>label_5</zorder>
+     <zorder>label_6</zorder>
+     <zorder>ardroneAuto</zorder>
+     <zorder>djiAuto</zorder>
+     <zorder>mavlinkAuto</zorder>
+     <zorder>label_6</zorder>
     </widget>
    </widget>
   </widget>
@@ -114,7 +224,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1150</width>
+     <width>680</width>
      <height>22</height>
     </rect>
    </property>

@@ -7,6 +7,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    deployed = false;
+
+    this->shark = new Shark();
+    this->alert = new Alert();
+
+    alert->standby();
+    shark->installDetection("../../Scripts/myGrep.sh","test","drones");
+    connect(ui->startButton,SIGNAL(clicked(bool)),this,SLOT(startSystem()));
+    connect(shark,SIGNAL(droneDetected()),alert,SLOT(droneDetected()));
+    connect(shark,SIGNAL(droneDetected()),this,SLOT(receiveDetect()));
+
     //configureSerialPort();
     //connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(goToMainMenu()));
     //connect(ui->pushButton_2,SIGNAL(clicked(bool)),this,SLOT(sendData()));
@@ -23,13 +34,13 @@ MainWindow::MainWindow(QWidget *parent) :
     shark->dVector->detect();*/
 
     //this->hwMan = new HardwareManager();
-    this->alert = new Alert();
     //this->log = new Log();
-    connect(ui->startLog,SIGNAL(clicked(bool)),log,SLOT(startRecording()));
-    connect(ui->endLog,SIGNAL(clicked(bool)),log,SLOT(stopRecording()));
-    connect(ui->alert,SIGNAL(clicked(bool)),alert,SLOT(deployGUI()));
+    //connect(ui->startLog,SIGNAL(clicked(bool)),log,SLOT(startRecording()));
+    //connect(ui->endLog,SIGNAL(clicked(bool)),log,SLOT(stopRecording()));
+    //connect(ui->alert,SIGNAL(clicked(bool)),alert,SLOT(deployGUI()));
     //connect(hwMan,SIGNAL(hackRFRemoved()),alert,SLOT(droneDetected()));
     //connect(hwMan,SIGNAL(hackRFRemoved()),this,SLOT(displayConnectivity()));
+
 
 
 }
@@ -38,6 +49,20 @@ MainWindow::~MainWindow()
 {
     //xbee->close();
     delete ui;
+}
+
+void MainWindow::startSystem()
+{
+    ui->startButton->setEnabled(false);
+    alert->scanning();
+    shark->startShark();
+    deployed = true;
+    ui->statusLabel->setText("STATUS: RUNNING");
+}
+
+void MainWindow::stopSystem()
+{
+
 }
 
 
@@ -55,17 +80,6 @@ void MainWindow::sendData()
    // ui->lineEdit->clear();
 }
 
-void MainWindow::populateLineEdit()
-{
-    //disconnect(xbee,SIGNAL(r(eadyRead()),this,SLOT(populateLineEdit()));
-    for(int i = 0;i < 90000;i++){}
-    //QString temp(xbee->readAll());
-    //ui->lineEdit_2->setText(ui->lineEdit_2->text()+temp);
-   // ui->lineEdit_2->setText(temp);
-   // qDebug() << "I am in this method" << temp << endl;
-     //connect(xbee,SIGNAL(readyRead()),this,SLOT(populateLineEdit()));
-}
-
 void MainWindow::receiveDetect()
 {
     qDebug() << "generic drone detected";
@@ -78,6 +92,7 @@ void MainWindow::displayConnectivity()
 
 void MainWindow::startLog()
 {
+
 }
 
 void MainWindow::endLog()

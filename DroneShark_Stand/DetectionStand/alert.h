@@ -39,7 +39,7 @@ private:
     QProcess* initProc; //TODO: replace with master initialization process called on startup
     QTimer* flashTimer;
 
-private slots:
+public slots:
     void toggleLights();
     void greenToggle();
     void yellowToggle();

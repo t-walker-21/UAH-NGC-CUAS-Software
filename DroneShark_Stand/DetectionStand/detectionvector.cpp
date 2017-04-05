@@ -31,14 +31,15 @@ void DetectionVector::detect()
     }
     else
     {
-        //some error message
+        qDebug() << "No Script installed on detection vector\n";
     }
 
 }
 
 void DetectionVector::runEngageScript()
 {
-    engage->start("sh " + script);
+    //engage->start("sh " + script);
+    engage->start("sh ../../Scripts/myGrep.sh");
 }
 
 void DetectionVector::haltDetect()
@@ -54,10 +55,10 @@ void DetectionVector::haltDetect()
 
 void DetectionVector::checkScriptResult()
 {
-    qDebug() << "hello?";
+    //qDebug() << "hello?";
     QString input;
     input = engage->readAllStandardOutput();
-    qDebug() << input;
+    //qDebug() << input;
 
     if (input == expect)
     {
