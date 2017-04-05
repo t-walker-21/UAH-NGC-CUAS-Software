@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-04T20:04:18
+# Project created by QtCreator 2017-04-04T20:01:26
 #
 #-------------------------------------------------
 
@@ -8,11 +8,11 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = DetectionStand
+TARGET = untitled
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        discard.cpp
+        mainwindow.cpp
 
-HEADERS  += discard.h
+HEADERS  += mainwindow.h

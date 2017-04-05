@@ -6,7 +6,7 @@
 #include<QProcess>
 #include<QTimer>
 
-#define SCNPER 1000
+#define SCNPER 500
 #define DETPER 250
 
 class Alert : public QObject
@@ -14,18 +14,23 @@ class Alert : public QObject
     Q_OBJECT
 public:
     explicit Alert(QObject *parent = 0);
+    void killAllLights(bool killTimer); //turn of all lights and buzzer
+
        ~Alert();
 
 
 
 private:
-    void killAllLights(bool killTimer); //turn of all lights and buzzer
 
     void checkHardware(); //check to sure hardware peripherals are still attached
 
     AlertDialog* alertWindow; //GUI window presented upon drone detection to give user information/options to engage threat UAV
 
     //keep track of lights/buzzer state
+    bool YELLOW_STATE;
+    bool GREEN_STATE;
+    bool RED_STATE;
+    bool BUZZER_STATE;
     bool YELLOW;
     bool GREEN;
     bool RED;

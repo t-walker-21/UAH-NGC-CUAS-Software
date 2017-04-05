@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     //xbee->close();
+    alert->killAllLights(true);
     delete ui;
 }
 

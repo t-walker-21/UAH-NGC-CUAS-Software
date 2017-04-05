@@ -3,12 +3,17 @@
 Alert::Alert(QObject *parent) : QObject(parent)
 {
     initProc = new QProcess();
-    //initProc->start("..."); //TODO:init light script
+    initProc->start("sudo sh ../../LowLevel/INIT_LIGHTS.sh"); //TODO:init light script
+    initProc->waitForFinished(1000);
+        YELLOW_STATE    = false;
+        GREEN_STATE     = false;
+        RED_STATE       = false;
+        BUZZER_STATE    = false;
 
-        YELLOW = false;
-        GREEN = false;
-        RED = false;
-        BUZZER = false;
+        RED     = false;
+        GREEN   = false;
+        YELLOW  = false;
+        BUZZER  = false;
 
         redProc = new QProcess();
         yellowProc = new QProcess();
@@ -22,6 +27,7 @@ Alert::Alert(QObject *parent) : QObject(parent)
 
 Alert::~Alert()
 {
+    killAllLights(true);
     delete redProc;
     delete yellowProc;
     delete greenProc;
@@ -31,62 +37,62 @@ Alert::~Alert()
 
 void Alert::buzzerToggle()
 {
-    if (BUZZER) //light is on
+    if (BUZZER_STATE) //light is on
     {
-        buzzerProc->start("sh ../../Scripts/BUZZER_OFF.sh");
-        BUZZER = false;
+        buzzerProc->start("sh ../../LowLevel/BUZZER_OFF.sh");
+        BUZZER_STATE = false;
     }
 
     else //light is off
     {
-        buzzerProc->start("sh ../../Scripts/BUZZER_ON.sh");
-        BUZZER = true;
+        buzzerProc->start("sh ../../LowLevel/BUZZER_ON.sh");
+        BUZZER_STATE = true;
     }
 }
 
 void Alert::yellowToggle()
 {
-    if (YELLOW) //light is on
+    if (YELLOW_STATE) //light is on
     {
-        yellowProc->start("sh ../../Scripts/YELLOW_OFF.sh");
-        YELLOW = false;
+        yellowProc->start("sh ../../LowLevel/YELLOW_OFF.sh");
+        YELLOW_STATE = false;
     }
 
     else //light is off
     {
-        yellowProc->start("sh ../../Scripts/YELLOW_ON.sh");
-        YELLOW = true;
+        yellowProc->start("sh ../../LowLevel/YELLOW_ON.sh");
+        YELLOW_STATE = true;
     }
 }
 
 void Alert::greenToggle()
 {
-    if (GREEN) //light is on
+    if (GREEN_STATE) //light is on
     {
-        greenProc->start("sh ../../Scripts/GREEN_OFF.sh");
-        GREEN = false;
+        greenProc->start("sh ../../LowLevel/GREEN_OFF.sh");
+        GREEN_STATE = false;
     }
 
     else //light is off
     {
-        greenProc->start("sh ../../Scripts/GREEN_ON.sh");
-        GREEN = true;
+        greenProc->start("sh ../../LowLevel/GREEN_ON.sh");
+        GREEN_STATE = true;
     }
 
 }
 
 void Alert::redToggle()
 {
-    if (RED) //light is on
+    if (RED_STATE) //light is on
     {
-        redProc->start("sh ../../Scripts/RED_OFF.sh");
-        RED = false;
+        redProc->start("sh ../../LowLevel/RED_OFF.sh");
+        RED_STATE = false;
     }
 
     else //light is off
     {
-        redProc->start("sh ../../Scripts/RED_ON.sh");
-        RED = true;
+        redProc->start("sh ../../LowLevel/RED_ON.sh");
+        RED_STATE = true;
     }
 
 
@@ -120,8 +126,6 @@ void Alert::scanning() //only yellow will flash
     flashTimer->setInterval(SCNPER);
     killAllLights(false);
 
-
-    RED = GREEN = BUZZER = false;
     YELLOW = true;
 }
 
@@ -130,10 +134,12 @@ void Alert::standby() //only green is solid
 
     killAllLights(true);
 
-    if(!GREEN)
+    if(!GREEN_STATE)
     {
         greenToggle();
     }
+
+    flashTimer->start();
 }
 
 void Alert::droneDetected() //only red and buzzer will flash
@@ -150,25 +156,27 @@ void Alert::killAllLights(bool killTimer) //turnoff all lights
         flashTimer->stop();
     }
 
-    if(GREEN)
+    RED = GREEN = BUZZER = YELLOW = false;
+
+    if(GREEN_STATE)
     {
         greenToggle();
 
     }
 
-    if(RED)
+    if(RED_STATE)
     {
         redToggle();
 
     }
 
-    if(YELLOW)
+    if(YELLOW_STATE)
     {
         yellowToggle();
 
     }
 
-    if(BUZZER)
+    if(BUZZER_STATE)
     {
         buzzerToggle();
 
