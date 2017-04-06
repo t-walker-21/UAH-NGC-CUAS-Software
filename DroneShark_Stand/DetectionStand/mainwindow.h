@@ -42,12 +42,9 @@ private:
 
 
 private slots:
-    void goToMainMenu();
     void sendData();
-    void receiveDetect();
+    void receiveDetect(QString message);
     void displayConnectivity();
-    void startLog();
-    void endLog();
     void startSystem();
     void stopSystem();
 };

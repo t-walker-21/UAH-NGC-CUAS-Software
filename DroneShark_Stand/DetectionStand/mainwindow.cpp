@@ -11,13 +11,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->shark = new Shark();
     this->alert = new Alert();
+    this->log = new Log();
 
     alert->standby();
     shark->installDetection("../../Scripts/myGrep.sh","test","drones");
     connect(ui->startButton,SIGNAL(clicked(bool)),this,SLOT(startSystem()));
-    connect(shark,SIGNAL(droneDetected()),alert,SLOT(droneDetected()));
-    connect(shark,SIGNAL(droneDetected()),this,SLOT(receiveDetect()));
+    connect(ui->stopButton,SIGNAL(clicked()),this,SLOT(stopSystem()));
+    connect(shark,SIGNAL(droneDetected(QString)),alert,SLOT(droneDetected()));
+    connect(shark,SIGNAL(droneDetected(QString)),this,SLOT(receiveDetect(QString)));
+    connect(shark,SIGNAL(droneDetected(QString)),log,SLOT(recordDetectedDrone(QString)));
 
+    ui->stopButton->setEnabled(false);
     //configureSerialPort();
     //connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(goToMainMenu()));
     //connect(ui->pushButton_2,SIGNAL(clicked(bool)),this,SLOT(sendData()));
@@ -34,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     shark->dVector->detect();*/
 
     //this->hwMan = new HardwareManager();
-    //this->log = new Log();
+
     //connect(ui->startLog,SIGNAL(clicked(bool)),log,SLOT(startRecording()));
     //connect(ui->endLog,SIGNAL(clicked(bool)),log,SLOT(stopRecording()));
     //connect(ui->alert,SIGNAL(clicked(bool)),alert,SLOT(deployGUI()));
@@ -57,22 +61,24 @@ void MainWindow::startSystem()
     ui->startButton->setEnabled(false);
     alert->scanning();
     shark->startShark();
+    log->startRecording();
     deployed = true;
     ui->statusLabel->setText("STATUS: RUNNING");
+    ui->stopButton->setEnabled(true);
 }
 
 void MainWindow::stopSystem()
 {
-
+    ui->startButton->setEnabled(true);
+    alert->standby();
+    shark->stopShark();
+    deployed = false;
+    ui->statusLabel->setText("STATUS: READY");
+    ui->stopButton->setEnabled(false);
+    log->stopRecording();
 }
 
 
-void MainWindow::goToMainMenu()
-{
-    mainMenu = new MainMenu();
-    mainMenu->show();
-    this->setHidden(true);
-}
 
 void MainWindow::sendData()
 {
@@ -81,23 +87,12 @@ void MainWindow::sendData()
    // ui->lineEdit->clear();
 }
 
-void MainWindow::receiveDetect()
+void MainWindow::receiveDetect(QString message)
 {
-    qDebug() << "generic drone detected";
+    qDebug() << message + " detected";
 }
 
 void MainWindow::displayConnectivity()
 {
     qDebug() << "HACKRF has been disconnected";
 }
-
-void MainWindow::startLog()
-{
-
-}
-
-void MainWindow::endLog()
-{
-
-}
-

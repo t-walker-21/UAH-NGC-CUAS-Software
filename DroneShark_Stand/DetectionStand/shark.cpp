@@ -34,7 +34,13 @@ void Shark::startShark()
     dVector->detect();
 }
 
+void Shark::stopShark()
+{
+    dVector->haltDetect();
+    aVector->haltAttack();
+}
+
 void Shark::alertSys()
 {
-    emit droneDetected();
+    emit droneDetected(dVector->getName());
 }

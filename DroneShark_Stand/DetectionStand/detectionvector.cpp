@@ -73,3 +73,7 @@ DetectionVector::~DetectionVector()
     delete engageTimer;
 }
 
+QString DetectionVector::getName()
+{
+    return name;
+}

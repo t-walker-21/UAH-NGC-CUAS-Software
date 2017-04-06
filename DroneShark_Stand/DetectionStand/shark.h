@@ -32,7 +32,7 @@ private:
     DetectionVector* dVector; // detection vector to sense enemy drone
 
 signals:
-    void droneDetected();
+    void droneDetected(QString message);
 
 
 public slots:

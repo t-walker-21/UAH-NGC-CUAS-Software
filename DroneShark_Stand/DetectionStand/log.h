@@ -28,6 +28,7 @@ private:
 public slots:
     void stopRecording();
     void startRecording();
+    void recordDetectedDrone(QString message);
 };
 
 #endif // LOG_H

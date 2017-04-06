@@ -17,11 +17,11 @@ void Log::startRecording()
     //qDebug() <<
 
 
-    logFile->setFileName("../../Logs/Log_" + date.toString("MMM-dd-yyyy") + "_" + timeStamp.toString("hh-mm-ss"));
+    logFile->setFileName("../../Logs/Log_" + date.toString("MMM-dd-yyyy") + "_" + timeStamp.toString("hh-mm-ss") + ".txt");
     logFile->open(QIODevice::ReadWrite);
 
-    logFile->write("USER: " + qgetenv("USER"));
-    logFile->write("\nThis is where the data will go");
+
+    logFile->write("DRONESHARK SYSTEM STARTED BY USER: " + qgetenv("USER") + "\n");
 
 }
 
@@ -40,4 +40,11 @@ Log::~Log()
         logFile->close();
 
     delete logFile;
+}
+
+void Log::recordDetectedDrone(QString message)
+{
+        timeStamp = QTime::currentTime();
+        QString mess = message + " DETECTED AT " + timeStamp.toString("hh:mm:ss") + "\n";
+        logFile->write(mess.toStdString().c_str());
 }

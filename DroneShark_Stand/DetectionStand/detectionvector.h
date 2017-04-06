@@ -15,6 +15,7 @@ public:
     void installDetection(QString script,QString name,QString expect); // name vector, place script in object, and set attack level
     void detect(); // start detection
     void haltDetect(); // stop detection
+    QString getName(); //return name of vector
 
 private:
     QString name; // name of vector
