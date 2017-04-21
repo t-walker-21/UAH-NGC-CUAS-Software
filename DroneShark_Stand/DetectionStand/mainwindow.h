@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
-#include <QSerialPort>
+//#include <QSerialPort>
 #include <mainmenu.h>
 #include <QTime>
 #include <shark.h>

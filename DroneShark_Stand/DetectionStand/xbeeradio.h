@@ -2,7 +2,7 @@
 #define XBEERADIO_H
 
 #include <QObject>
-#include <QSerialPort>
+//#include <QSerialPort>
 #include <QDebug>
 
 class XbeeRadio : public QObject
@@ -12,7 +12,7 @@ public:
     explicit XbeeRadio(QObject *parent = 0);
 
 private:
-    QSerialPort* xbeeSerialPort; // serial port to write to Xbee
+    //QSerialPort* xbeeSerialPort; // serial port to write to Xbee
     bool configureSerialPort(); // configure and attempt to open serial port. Returns TRUE/FALSE if successful
 
 signals:

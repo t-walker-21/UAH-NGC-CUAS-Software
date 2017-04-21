@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-05T20:53:52
+# Project created by QtCreator 2017-04-21T02:56:34
 #
 #-------------------------------------------------
 
@@ -12,7 +12,36 @@ TARGET = DetectionStand
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        discard.cpp
+SOURCES += \
+    alert.cpp \
+    alertdialog.cpp \
+    attackvector.cpp \
+    commsmanagers.cpp \
+    detectionvector.cpp \
+    hardwaremanager.cpp \
+    log.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    shark.cpp \
+    switchreader.cpp \
+    xbeeradio.cpp
 
-HEADERS  += discard.h
+HEADERS  += \
+    alert.h \
+    alertdialog.h \
+    attackvector.h \
+    commsmanagers.h \
+    detectionvector.h \
+    hardwaremanager.h \
+    log.h \
+    mainwindow.h \
+    shark.h \
+    switchreader.h \
+    xbeecomms.h \
+    xbeeradio.h
+
+FORMS += \
+    alertdialog.ui \
+    mainwindow.ui
+
+OTHER_FILES +=
